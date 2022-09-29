@@ -39,7 +39,7 @@ nav {
   margin-bottom: 1.5vh;
 
   .navCenter {
-    width: 40%;
+    width: 450px;
     display: flex;
     justify-content: space-between;
 

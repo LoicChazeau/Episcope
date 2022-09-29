@@ -1,29 +1,18 @@
 <template>
   <div class="drawContainer">
-    <div class="cardContainer" style="margin-right: 20px">
-      <div class="backCard animate__animated animate__infinite animate__pulse">
-        <img src="../assets/card.svg" alt="card" />
-        <img class="logo" src="../assets/logo.png" alt="logo" />
-      </div>
-      <div class="backCard animate__animated animate__infinite animate__pulse">
-        <img src="../assets/card.svg" alt="card" />
-        <img class="logo" src="../assets/logo.png" alt="logo" />
-      </div>
-      <div class="backCard animate__animated animate__infinite animate__pulse">
-        <img src="../assets/card.svg" alt="card" />
-        <img class="logo" src="../assets/logo.png" alt="logo" />
-      </div>
-    </div>
-    <div class="cardContainer" style="margin-right: 20px">
-      <div class="backCard animate__animated animate__infinite animate__pulse">
-        <img src="../assets/card.svg" alt="card" />
-        <img class="logo" src="../assets/logo.png" alt="logo" />
-      </div>
-      <div class="backCard animate__animated animate__infinite animate__pulse">
-        <img src="../assets/card.svg" alt="card" />
-        <img class="logo" src="../assets/logo.png" alt="logo" />
-      </div>
-      <div class="backCard animate__animated animate__infinite animate__pulse">
+    <div class="cardContainer">
+      <div
+        v-for="card in cards"
+        :key="card.id"
+        @mouseover="onOver(card)"
+        @mouseleave="onLeave(card)"
+        @click="onClick(card)"
+        :class="{
+          animate__flipInY: disabled[card],
+          animate__pulse: hover[card],
+        }"
+        class="backCard animate__animated animate__infinite"
+      >
         <img src="../assets/card.svg" alt="card" />
         <img class="logo" src="../assets/logo.png" alt="logo" />
       </div>
@@ -38,8 +27,24 @@ export default {
   name: "DrawView",
   data() {
     return {
-      hover: false,
+      cards: [0, 1, 2, 3, 4, 5],
+      hover: [false, false, false, false, false, false],
+      disabled: [false, false, false, false, false, false],
     };
+  },
+  methods: {
+    onClick(card) {
+      this.disabled[card] = true;
+      setTimeout(() => {
+        this.disabled[card] = false;
+      }, 1000);
+    },
+    onOver(card) {
+      this.hover[card] = true;
+    },
+    onLeave(card) {
+      this.hover[card] = false;
+    },
   },
 };
 </script>
@@ -49,14 +54,17 @@ export default {
 
 .drawContainer {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: 3.5%;
 }
 
 .cardContainer {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  width: 800px;
   justify-content: center;
+  margin-right: 20px;
 
   .logo {
     position: relative;

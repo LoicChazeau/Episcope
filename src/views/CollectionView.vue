@@ -70,8 +70,8 @@
       <div
         @mouseover="hover_2 = true"
         @mouseleave="hover_2 = false"
-        :class="{ animate__pulse: hover_2 }"
-        class="card animate__animated animate__infinite"
+        :class="{ animate__flipInY: hover_2 }"
+        class="card animate__animated"
       >
         <img
           src="../assets/animals/whale.svg"
@@ -79,11 +79,15 @@
           style="height: 100px; margin: 76px 0px"
         />
       </div>
-      <div class="backCard animate__animated animate__infinite animate__pulse">
+      <div
+        class="backCard animate__animated animate__infinite animate__flipInY"
+      >
         <img src="../assets/card.svg" alt="card" />
         <img class="logo" src="../assets/logo.png" alt="logo" />
       </div>
-      <div class="backCard animate__animated animate__infinite animate__pulse">
+      <div
+        class="backCard animate__animated animate__infinite animate__flipOutY"
+      >
         <img src="../assets/card.svg" alt="card" />
         <img class="logo" src="../assets/logo.png" alt="logo" />
       </div>
