@@ -1,6 +1,6 @@
 <template>
   <div class="collectionContainer">
-    <div class="cardContainer">
+    <div class="collectionCardContainer">
       <div class="backCard">
         <img src="../assets/card.svg" alt="card" />
         <img class="logo" src="../assets/logo.png" alt="logo" />
@@ -18,7 +18,7 @@
         <img class="logo" src="../assets/logo.png" alt="logo" />
       </div>
     </div>
-    <div class="cardContainer">
+    <div class="collectionCardContainer">
       <div class="backCard">
         <img src="../assets/card.svg" alt="card" />
         <img class="logo" src="../assets/logo.png" alt="logo" />
@@ -36,7 +36,7 @@
         <img class="logo" src="../assets/logo.png" alt="logo" />
       </div>
     </div>
-    <div class="cardContainer">
+    <div class="collectionCardContainer">
       <div class="backCard">
         <img src="../assets/card.svg" alt="card" />
         <img class="logo" src="../assets/logo.png" alt="logo" />
@@ -54,7 +54,7 @@
         <img class="logo" src="../assets/logo.png" alt="logo" />
       </div>
     </div>
-    <div class="cardContainer">
+    <div class="collectionCardContainer">
       <div
         @mouseover="hover_1 = true"
         @mouseleave="hover_1 = false"
@@ -127,7 +127,7 @@ export default {
   margin-right: 10px;
   margin-left: 20px;
 
-  .cardContainer {
+  .collectionCardContainer {
     margin: 15px 0;
     margin-right: 15px;
     display: flex;
@@ -162,9 +162,5 @@ export default {
       border-radius: 20px;
     }
   }
-}
-
-.test {
-  background-image: url("../assets/card.svg");
 }
 </style>
