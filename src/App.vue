@@ -4,10 +4,39 @@
       <router-link to="/">Accueil</router-link>
       <router-link to="/tirage">Tirage</router-link>
       <router-link to="/collection">Collection</router-link>
+      <span v-if="isLoggedIn">
+        <button @click="signOut">Déconnexion</button>
+      </span>
+      <span v-else>
+        <router-link to="/inscription">Incription</router-link>
+        <router-link to="/connexion"> Connexion </router-link>
+      </span>
     </div>
   </nav>
   <router-view />
 </template>
+
+<script setup>
+import { ref } from "vue";
+import firebase from "firebase/compat/app";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const isLoggedIn = ref(true);
+
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    isLoggedIn.value = true; // if we have a user
+  } else {
+    isLoggedIn.value = false; // if we do not
+  }
+});
+
+const signOut = () => {
+  firebase.auth().signOut();
+  router.push("/");
+};
+</script>
 
 <style lang="scss">
 @import "animate.css";
